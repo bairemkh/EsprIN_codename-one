@@ -17,7 +17,7 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
-package com.codename1.uikit.materialscreens;
+package Views;
 
 import com.codename1.charts.ChartComponent;
 import com.codename1.charts.models.XYMultipleSeriesDataset;
@@ -41,6 +41,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
+//import com.codename1.uikit.materialscreens.SideMenuBaseForm;
+
 
 /**
  *

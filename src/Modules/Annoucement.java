@@ -16,6 +16,9 @@ public class Annoucement {
     private State state;
     private Date createdAt=new Date();
 
+    public Annoucement() {
+    }
+
     public Annoucement(int idAnn, String subjectAnn, String contentAnn, AnnounceDestination destAnn, int idSender, Date createdAt) {
         this.idAnn = idAnn;
         this.subjectAnn = subjectAnn;
@@ -67,6 +70,10 @@ public class Annoucement {
 
     public int getIdSender() {
         return idSender;
+    }
+
+    public void setIdSender(int idSender) {
+        this.idSender = idSender;
     }
 
     public State getState() {

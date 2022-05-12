@@ -18,7 +18,13 @@ public class Forum {
 
     }
 
-    public Forum(int idForum, String title, String content, int idOwner,String categoryForum,State state) {
+    public Forum(String title, String content, String categoryForum) {
+        this.title = title;
+        this.content = content;
+        this.categoryForum = categoryForum;
+    }
+
+    public Forum(int idForum, String title, String content, int idOwner, String categoryForum, State state) {
         this.idForum = idForum;
         this.title = title;
         this.content = content;

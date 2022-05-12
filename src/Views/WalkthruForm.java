@@ -17,7 +17,7 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
-package com.codename1.uikit.materialscreens;
+package Views;
 
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;

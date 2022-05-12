@@ -17,8 +17,12 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
-package com.codename1.uikit.materialscreens;
+package Views;
 
+import Views.Cells.AnnounceCell;
+import Views.Cells.EventCell;
+import Views.Cells.OfferCell;
+import Views.Cells.PostCell;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -52,21 +56,23 @@ public abstract class SideMenuBaseForm extends Form {
     }
     
     public void setupSideMenu(Resources res) {
+        Form cuurent = this;
         Image profilePic = res.getImage("user-picture.jpg");
         Image mask = res.getImage("round-mask.png");
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
-        Label profilePicLabel = new Label("  Jennifer Wilson", profilePic, "SideMenuTitle");
+        Label profilePicLabel = new Label(" User Name", profilePic, "SideMenuTitle");
         profilePicLabel.setMask(mask.createMask());
 
         Container sidemenuTop = BorderLayout.center(profilePicLabel);
         sidemenuTop.setUIID("SidemenuTop");
         
         getToolbar().addComponentToSideMenu(sidemenuTop);
-        getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Activity", FontImage.MATERIAL_TRENDING_UP,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Tasks", FontImage.MATERIAL_ACCESS_TIME,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> showOtherForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Posts", FontImage.MATERIAL_DASHBOARD,  e -> new PostForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_EVENT,  e -> new EventForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Forums", FontImage.MATERIAL_ADD_ALERT,  e -> new ForumForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Announcement", FontImage.MATERIAL_ANNOUNCEMENT,  e -> new AnnounceForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Offer", FontImage.MATERIAL_LOCAL_OFFER,  e -> new OfferForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
     }
     
