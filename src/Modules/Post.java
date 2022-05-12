@@ -14,7 +14,10 @@ public class Post {
     private String createdBy;
     private Categories categories;
     private State state;
+    private long idowner;
 
+    public Post() {
+    }
 
     public long getIdPost() {
         return idPost;
@@ -78,6 +81,14 @@ public class Post {
 
     public void setStatus(State status) {
         this.state = status;
+    }
+
+    public long getIdowner() {
+        return idowner;
+    }
+
+    public void setIdowner(long idowner) {
+        this.idowner = idowner;
     }
 
     public Post(int idPost, String content, String mediaURL, int likeNumber, Date createdAt, String createdBy, Categories categories) {

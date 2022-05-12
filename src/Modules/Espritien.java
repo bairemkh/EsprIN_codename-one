@@ -6,8 +6,8 @@ import Utils.Enums.State;
 import java.util.Date;
 
 public class Espritien extends User {
-    private String firstName;
-    private String lastName;
+    protected String firstName;
+    protected String lastName;
 
     protected Espritien(long cinUser, String email, String passwd, String imgUrl, Roles role, String firstName, String lastName) {
         super(cinUser, email, passwd, imgUrl, role);
@@ -15,7 +15,11 @@ public class Espritien extends User {
         this.lastName = lastName;
     }
 
-    protected Espritien(long cinUser, String email, String passwd, String imgUrl, Roles role, Date createdAt, State state, String firstName, String lastName) {
+    protected Espritien() {
+super();
+    }
+
+    public Espritien(long cinUser, String email, String passwd, String imgUrl, Roles role, Date createdAt, State state, String firstName, String lastName) {
         super(cinUser, email, passwd, imgUrl, role, createdAt, state);
         this.firstName = firstName;
         this.lastName = lastName;

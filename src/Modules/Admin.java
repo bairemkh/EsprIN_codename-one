@@ -12,6 +12,10 @@ public class Admin extends Espritien {
         this.department=department;
     }
 
+    public Admin() {
+        super();
+    }
+
     public AdminDepartments getDepartment() {
         return department;
     }

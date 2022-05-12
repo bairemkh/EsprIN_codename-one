@@ -13,8 +13,13 @@ public class Event {
         private String ImgURL;
         private long idOrganizer;
         private State state;
+        private int ParticipateNumber;
+        private String Location;
 
-        public long getIdOrganizer() {
+    public Event() {
+    }
+
+    public long getIdOrganizer() {
             return idOrganizer;
         }
 
@@ -61,6 +66,22 @@ public class Event {
         }
 
         public State getState() { return state; }
+
+    public int getParticipateNumber() {
+        return ParticipateNumber;
+    }
+
+    public void setParticipateNumber(int participateNumber) {
+        ParticipateNumber = participateNumber;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
 
     public Event(String TitleEvent, String Description){
         this.TitleEvent=TitleEvent;

@@ -17,7 +17,7 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
-package com.codename1.uikit.materialscreens;
+package Views;
 
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
@@ -34,6 +34,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+//import com.codename1.uikit.materialscreens.SideMenuBaseForm;
 
 /**
  * Represents a user profile in the app, the first form we open after the walkthru

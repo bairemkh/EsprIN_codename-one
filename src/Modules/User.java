@@ -7,13 +7,17 @@ import Utils.Enums.State;
 import java.util.Date;
 
 public class User {
-    private long cinUser;
-    private String email;
-    private String passwd;
-    private String imgUrl;
-    private Roles role;
-    private Date createdAt;
-    private State state;
+    protected long cinUser;
+    protected String email;
+    protected String passwd;
+    protected String imgUrl;
+    protected Roles role;
+    protected Date createdAt;
+    protected State state;
+
+    public User() {
+
+    }
 
     public long getCinUser() {
         return cinUser;
@@ -79,6 +83,10 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
         this.state = state;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
     }
 
     public void setCreatedAt(Date createdAt) {

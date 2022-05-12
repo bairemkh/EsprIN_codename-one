@@ -12,6 +12,9 @@ public class Offre {
 
     private State state;
 
+    public Offre() {
+    }
+
     public Offre(OffreCategorie category, String titleOffer, String descOffer, long offerProvider, String imgOffre) {
         this.category = category;
         this.titleOffer = titleOffer;
@@ -28,6 +31,14 @@ public class Offre {
         this.titleOffer = titleOffer;
         this.descOffer = descOffer;
         this.imgOffre = imgOffre;
+    }
+
+    public int getIdOffre() {
+        return idOffre;
+    }
+
+    public void setIdOffre(int idOffre) {
+        this.idOffre = idOffre;
     }
 
     public OffreCategorie getCategory() {
