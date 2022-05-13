@@ -5,6 +5,7 @@ import Utils.Enums.AdminDepartments;
 import Utils.Enums.Domaine;
 import Utils.Enums.Roles;
 import Utils.Enums.TypeClub;
+import Utils.SessionManager;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
@@ -23,8 +24,8 @@ public class UserServices {
     private ConnectionRequest req;
     public ArrayList<User> userArrayList;
     public boolean resultOK;
-
-    private UserServices()  {
+    public int code;
+    private UserServices() {
         req = new ConnectionRequest();
     }
 
@@ -200,4 +201,50 @@ public class UserServices {
 
         return resultOK;
     }
+
+    public Club getClubByEvent(Event event) {
+
+        ArrayList<User> users = this.getUsers();
+        for (User u : users) {
+            //if(u.getCinUser())
+        }
+        return null;
+    }
+
+    public boolean login(String email, String password) {
+        String url = URL + "loginCheck";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addArgument("userMail", email);
+        req.addArgument("userPasswd", password);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                code=checkLogin(req.getResponseCode(), email);
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return code==200;
+    }
+
+    public int checkLogin(int code, String email) {
+        if (code == 200) {
+            SessionManager sessionManager = SessionManager.getInstance();
+            sessionManager.insertSession(email);
+        }
+        return code;
+    }
+
+    public User getUserByEmail(String email) {
+        ArrayList<User> users = this.getUsers();
+        for (User u : users) {
+            if (u.getEmail().equals(email)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
 }

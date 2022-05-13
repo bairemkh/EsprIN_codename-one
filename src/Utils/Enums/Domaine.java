@@ -1,6 +1,6 @@
 package Utils.Enums;
 
 public enum Domaine {
-    Génie_civil, Electromecanique,
+    Civil_engineering, Electromecanique,IT,
     Informatique, Telecommunication,Business
 }

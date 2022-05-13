@@ -19,6 +19,11 @@
 
 package Views;
 
+import Modules.Espritien;
+import Modules.Extern;
+import Modules.User;
+import Utils.Enums.Roles;
+import Utils.SessionManager;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
 import com.codename1.ui.Button;
@@ -44,6 +49,14 @@ import com.codename1.ui.util.Resources;
 public class ProfileForm extends SideMenuBaseForm {
     public ProfileForm(Resources res) {
         super(BoxLayout.y());
+        SessionManager sessionManager=SessionManager.getInstance();
+        User user;
+        if(sessionManager.getCurrentUser().getRole().equals(Roles.Extern)){
+            user=(Extern)sessionManager.getCurrentUser();
+        }
+        else{
+            user=(Espritien)sessionManager.getCurrentUser();
+        }
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
         Image profilePic = res.getImage("user-picture.jpg");
@@ -67,13 +80,21 @@ public class ProfileForm extends SideMenuBaseForm {
                         new Label("completed tasks", "CenterSubTitle")
         );
         completedTasks.setUIID("CompletedTasks");
-
+        String data[]=new String[2];
+        if(user instanceof Extern){
+            data[0]=((Extern) user).getEntrepriseName();
+            data[1]=user.getRole().name();
+        }
+        else {
+            data[0]=((Espritien) user).getFirstName()+" "+((Espritien) user).getLastName();
+            data[1]=user.getRole().name();
+        }
         Container titleCmp = BoxLayout.encloseY(
                         FlowLayout.encloseIn(menuButton),
                         BorderLayout.centerAbsolute(
                                 BoxLayout.encloseY(
-                                    new Label("Jennifer Wilson", "Title"),
-                                    new Label("UI/UX Designer", "SubTitle")
+                                    new Label(data[0], "Title"),
+                                    new Label(data[1], "SubTitle")
                                 )
                             ).add(BorderLayout.WEST, profilePicLabel),
                         GridLayout.encloseIn(2, remainingTasks, completedTasks)

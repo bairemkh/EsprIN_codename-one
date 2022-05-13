@@ -2,6 +2,7 @@ package Views;
 
 import Modules.Event;
 import Services.EventServices;
+import Utils.UsefulMethodes;
 import Views.Cells.EventCell;
 import com.codename1.charts.compat.Paint;
 import com.codename1.components.FloatingActionButton;
@@ -143,8 +144,8 @@ public class EventForm extends SideMenuBaseForm {
 
                 BoxLayout.encloseXCenter(
                         //  new Label(Events.get(0).getDateEvent().toString(), "Role"),
-                        new Label("Start Date", "Role"),
-                        new Label("End Date", "Role")
+                        new Label(UsefulMethodes.convertDateToString(e.getDateDebut()), "Role"),
+                        new Label(UsefulMethodes.convertDateToString(e.getDateFin()) , "Role")
                 )
         );
 

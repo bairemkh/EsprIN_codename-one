@@ -3,7 +3,10 @@ package vikings;
 
 import static com.codename1.ui.CN.*;
 
+import Utils.SessionManager;
 import Views.Cells.*;
+import Views.ProfileForm;
+import Views.WalkthruForm;
 import com.codename1.ui.Form;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
@@ -22,6 +25,7 @@ public class MyApplication {
    // public static ImageCursor theme;
     private Form current;
     private static Resources theme;
+
 
     public void init(Object context) {
         // use two network threads instead of one
@@ -51,7 +55,14 @@ public class MyApplication {
             current.show();
             return;
         }
-        new LoginForm(theme).show();
+        SessionManager sessionManager=SessionManager.getInstance();
+
+        if(sessionManager.getSession()==null) {
+            new LoginForm(theme).show();
+        }
+        else {
+            new ProfileForm(theme).show();
+        }
     }
 
     public void stop() {

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static Utils.UsefulMethodes.convertStringToDate;
+
 public class EventServices {
     private static EventServices instance;
     private final String URL="http://127.0.0.1:8000/api/";
@@ -64,6 +66,8 @@ public class EventServices {
                 f.setIdEvent((int)id);
                 f.setTitleEvent((obj.get("titleevent").toString()));
                 f.setDescription((obj.get("contentevent").toString()));
+                f.setDateDebut(convertStringToDate(obj.get("datedebut").toString()));
+                f.setDateFin(convertStringToDate(obj.get("datefin").toString()));
                 if (obj.get("imgurl")==null)
                     f.setImgURL("null");
                 else

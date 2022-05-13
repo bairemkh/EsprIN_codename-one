@@ -1,5 +1,7 @@
 package Views;
 
+import Services.UserServices;
+import Utils.SessionManager;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -22,7 +24,7 @@ public class LoginForm extends Form {
                 new Label("Welcome, ", "WelcomeWhite"),
                 new Label("To EsprIN", "WelcomeBlue")
         );
-
+        UserServices userServices=UserServices.getInstance();
         getTitleArea().setUIID("Container");
 
         Image profilePic = theme.getImage("user-picture.jpg");
@@ -59,9 +61,12 @@ public class LoginForm extends Form {
         );
 
         loginButton.addActionListener(e -> {
-            Toolbar.setGlobalToolbar(false);
-            new WalkthruForm(theme).show();
-            Toolbar.setGlobalToolbar(true);
+           boolean ok= userServices.login(login.getText(),password.getText());
+            if(ok) {
+                Toolbar.setGlobalToolbar(false);
+                new WalkthruForm(theme).show();
+                Toolbar.setGlobalToolbar(true);
+            }
         });
 
         Button createNewAccount = new Button("CREATE NEW ACCOUNT");

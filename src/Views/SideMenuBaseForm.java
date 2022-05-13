@@ -19,6 +19,7 @@
 
 package Views;
 
+import Utils.SessionManager;
 import Views.Cells.AnnounceCell;
 import Views.Cells.EventCell;
 import Views.Cells.OfferCell;
@@ -73,7 +74,11 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Forums", FontImage.MATERIAL_ADD_ALERT,  e -> new ForumForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Announcement", FontImage.MATERIAL_ANNOUNCEMENT,  e -> new AnnounceForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Offer", FontImage.MATERIAL_LOCAL_OFFER,  e -> new OfferForm(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> {
+            SessionManager sessionManager=SessionManager.getInstance();
+            sessionManager.deleteSession();
+            new LoginForm(res).show();
+        });
     }
     
     protected abstract void showOtherForm(Resources res);
